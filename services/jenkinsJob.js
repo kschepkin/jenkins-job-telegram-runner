@@ -24,22 +24,22 @@ export const runJenkinsJob = (msg, name, jenkinsPath, menu) => {
         }
       })
         .then(resp => {
-          bot.editMessageText(`Обновляем ${name}`, getKeyboard(chatId, messageId, menu.Back));
+          bot.editMessageText(`Запустил ${name}`, getKeyboard(chatId, messageId, menu.Back));
           bot.sendChatAction(chatId, 'typing');
           const x = async () => {
             const TEST = await checkJenkins(msg, jenkinsPath);
             if (TEST == 'wait') {
               x();
               bot.sendChatAction(chatId, 'typing');
-            } else if (TEST == 'true') bot.editMessageText(`Успешно обновил ${name}`, getKeyboard(chatId, messageId, menu.Back));
-            else if (TEST == 'false') bot.editMessageText(`Какие то проблемы с обновлением ${name}`, getKeyboard(chatId, messageId, menu.Back));
+            } else if (TEST == 'true') bot.editMessageText(`Успешно выполнил ${name}`, getKeyboard(chatId, messageId, menu.Back));
+            else if (TEST == 'false') bot.editMessageText(`Какие то проблемы с выполнением ${name}`, getKeyboard(chatId, messageId, menu.Back));
           };
           setTimeout(x, 9000);
         })
         .catch(error => {
           console.log(error);
-          logger(`${time} - Не смог обновить ${name} ... ошибка на стороне jenkins \n`, './updateServer.log');
-          bot.editMessageText('Похоже jenkins недоступен, попросите моего создателя @WeslyG разобраться!', getKeyboard(chatId, messageId, menu.Errorx));
+          logger(`${time} - Не смог выполнить ${name} ... ошибка на стороне jenkins \n`, './updateServer.log');
+          bot.editMessageText('Похоже jenkins недоступен, попросите моего создателя разобраться!', getKeyboard(chatId, messageId, menu.Errorx));
         });
     });
 };
