@@ -24,7 +24,7 @@ bot.on('callback_query', msg => {
     case 'jobs1':
       runJenkinsJob(msg, 'job1', job.job1.path, back);
       break;
-    case 'jobs12':
+    case 'jobs2':
       runJenkinsJob(msg, 'job2', job.job2.path, back);
       break;
     default:
