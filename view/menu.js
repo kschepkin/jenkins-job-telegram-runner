@@ -5,7 +5,7 @@ export const mainMenu = [
   }],
   [{
     text: 'Run job2',
-    callback_data: 'job2'
+    callback_data: 'jobs2'
   }]
 ];
 export const Back = [
